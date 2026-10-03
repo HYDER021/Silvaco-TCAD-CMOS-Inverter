@@ -1,0 +1,33 @@
+go atlas
+
+mesh infile=pmos.str
+
+models cvt srh
+
+contact name=gate workfunction=5.1
+
+solve init
+
+solve vgate=-0.8
+solve vdrain=0.0
+log outf=pmos_vsd_vgs08.log
+solve vdrain=-0.05 vstep=-0.05 vfinal=-1.5 name=drain
+log off
+
+solve init
+
+solve vgate=-1.0
+solve vdrain=0.0
+log outf=pmos_vsd_vgs10.log
+solve vdrain=-0.05 vstep=-0.05 vfinal=-1.5 name=drain
+log off
+
+solve init
+
+solve vgate=-1.2
+solve vdrain=0.0
+log outf=pmos_vsd_vgs12.log
+solve vdrain=-0.05 vstep=-0.05 vfinal=-1.5 name=drain
+log off
+
+quit
